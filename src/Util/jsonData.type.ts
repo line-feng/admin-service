@@ -1,6 +1,6 @@
-export interface jsonDataType {
+export interface jsonDataType<T> {
   code: number;
-  data: Object;
-  list: [];
+  data: T;
+  list: T[];
   message: string;
 }

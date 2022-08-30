@@ -1,10 +1,12 @@
 import { jsonDataType } from './jsonData.type';
 
-export class JsonData {
+export class JsonData<T> {
   private code: number = 200;
-  private data: Object = {};
-  private list: [] = [];
+  private data: T = null;
+  private list: T[] = [];
   private message: string = 'success';
+  private total: number = null;
+  private currPage: number = null;
 
   getCode(): number {
     return this.code;
@@ -15,13 +17,13 @@ export class JsonData {
   getData(): Object {
     return this.data;
   }
-  setData(data: Object) {
+  setData(data: T) {
     this.data = data;
   }
-  getList(): [] {
+  getList(): T[] {
     return this.list;
   }
-  setList(list: []) {
+  setList(list: T[]) {
     this.list = list;
   }
   getMessage(): string {
@@ -30,7 +32,19 @@ export class JsonData {
   setMessage(message: string) {
     this.message = message;
   }
-  sendData(): jsonDataType {
+  getTotal(): number {
+    return this.total;
+  }
+  setTotal(total: number) {
+    this.total = total;
+  }
+  getCurrPage(): number {
+    return this.currPage;
+  }
+  setCurrPage(currPage: number) {
+    this.currPage = currPage;
+  }
+  sendData(): jsonDataType<T> {
     return {
       code: this.code,
       data: this.data,

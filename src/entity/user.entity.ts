@@ -7,7 +7,7 @@ export class User {
     name: 'id',
     comment: '主键id',
   })
-  id: number;
+  id?: number;
   @Column({
     type: 'varchar',
     nullable: false,
@@ -16,15 +16,15 @@ export class User {
     name: 'username',
     comment: '姓名',
   })
-  username: string;
+  username?: string;
 
   @Column({
     type: 'varchar',
     nullable: false,
-    unique: true,
+    unique: false,
     length: 20,
     name: 'password',
     comment: '密码',
   })
-  password: string;
+  password?: string;
 }
