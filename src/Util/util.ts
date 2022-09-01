@@ -1,3 +1,4 @@
+const os = require('os');
 import { getDateAll, numStr } from './type/type';
 export class Utils {
   static successCode: number = 200;
@@ -36,5 +37,17 @@ export class Utils {
   }
   static setNumber(num: numStr): numStr {
     return num < 10 ? '0' + num : num;
+  }
+  static getIp():string {
+    var interfaces = os.networkInterfaces();
+    for (var devName in interfaces) {
+      var iface = interfaces[devName];
+      for (var i = 0; i < iface.length; i++) {
+        var alias = iface[i];
+        if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+          return alias.address;
+        }
+      }
+    }
   }
 }

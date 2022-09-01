@@ -39,7 +39,7 @@ export class AuthGuard implements CanActivate {
           let token = await JwtClass.setToken(user);
           if (user.id) {
             response.cookie('sid', token, {
-              domain: '192.168.1.109',
+              domain: '127.0.0.1',
               // maxAge: 3600,
               httpOnly: true,
               // signed: true,

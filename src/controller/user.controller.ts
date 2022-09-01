@@ -7,9 +7,8 @@ import { UserService } from 'src/service/user.service';
 @Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Public()
   @Get('/selectUserList')
-  async login(
+  async selectUserList(
     @Body() body: User,
     @Request() request,
   ): Promise<jsonDataType<User>> {
