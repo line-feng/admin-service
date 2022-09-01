@@ -1,8 +1,9 @@
+import { User } from './../entity/user.entity';
 import { sign, verify, JwtPayload } from 'jsonwebtoken';
-import { User } from '../entity/user.entity';
+import { type } from 'os';
 export class JwtClass {
   static token_key: string = 'service';
-  constructor() {}
+  constructor() { }
   static setToken(rule: User): Promise<string> {
     rule = JSON.parse(JSON.stringify(rule));
     return new Promise((r, j) => {
@@ -12,7 +13,12 @@ export class JwtClass {
       });
     });
   }
-  static getTokenData(token: string): User {
-    return verify(token, this.token_key) as User;
+  static getTokenData(token: string): JwtPayload | string{
+    const result: JwtPayload|string = verify(token, this.token_key);
+    if (typeof result !== 'string'){
+      delete result.iat;
+      delete result.exp;
+    }
+    return result
   }
 }

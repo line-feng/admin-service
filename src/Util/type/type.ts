@@ -9,9 +9,3 @@ export interface getDateAll {
   state?: boolean;
   msg?: string;
 }
-
-export interface http {
-  agreement: string,
-  host: string,
-  port: string
-}

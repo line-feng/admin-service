@@ -1,3 +1,4 @@
+import { User } from './../../entity/user.entity';
 import {
   CanActivate,
   ExecutionContext,
@@ -29,17 +30,13 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       try {
-        let user = JwtClass.getTokenData(sid) as any;
+        let user:unknown = JwtClass.getTokenData(sid);
         request.cookies.user = user;
-        // console.log(user);
-        delete user.iat;
-        delete user.exp;
-        // console.log(user);
         (async () => {
           let token = await JwtClass.setToken(user);
-          if (user.id) {
+          if ((user as User).id) {
             response.cookie('sid', token, {
-              domain: '127.0.0.1',
+              domain: request.hostname,
               // maxAge: 3600,
               httpOnly: true,
               // signed: true,
