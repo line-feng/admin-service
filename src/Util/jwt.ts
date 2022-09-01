@@ -1,6 +1,5 @@
 import { User } from './../entity/user.entity';
 import { sign, verify, JwtPayload } from 'jsonwebtoken';
-import { type } from 'os';
 export class JwtClass {
   static token_key: string = 'service';
   constructor() { }
