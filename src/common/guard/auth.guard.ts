@@ -9,11 +9,10 @@ import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
 import { Utils } from 'src/Util/util';
 import { JwtClass } from '../../Util/jwt';
-import { getDateAll } from '../../Util/type/type';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor() {}
+  constructor() { }
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
@@ -25,25 +24,29 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const response = context.switchToHttp().getResponse();
     let sid: string | null = request.cookies?.sid;
+    // console.log(request);
+    console.log(request.hostname, 'hostname');
+    console.log(request.query, 'query');
+    console.log(request.params, 'params');
+    console.log(request.body, 'body');
 
     if (isPublic) {
       return true;
     } else {
       try {
-        let user:unknown = JwtClass.getTokenData(sid);
+        let user: unknown = JwtClass.getTokenData(sid);
         request.cookies.user = user;
         (async () => {
           let token = await JwtClass.setToken(user);
           if ((user as User).id) {
             response.cookie('sid', token, {
               domain: request.hostname,
-              // maxAge: 3600,
+              maxAge: 60000,
               httpOnly: true,
               // signed: true,
             });
           }
         })();
-
         return true;
       } catch (e) {
         // console.log(e);

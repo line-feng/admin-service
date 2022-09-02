@@ -16,10 +16,10 @@ export class LoginController {
     jsonData.setCode(Utils.successCode);
     jsonData.setMessage('登录成功');
     const token = await JwtClass.setToken(data);
-    
+    // this.logger
     response.cookie('sid', token, {
       domain: request.hostname,
-      // maxAge: 3600,
+      maxAge: 60000,
       httpOnly: true,
       // signed: true,
     });

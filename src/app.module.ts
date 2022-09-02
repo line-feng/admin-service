@@ -18,7 +18,7 @@ import { UsersModule } from './module/user.module';
       synchronize: true,
       // autoLoadEntities: true,
     }),
-    UsersModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
