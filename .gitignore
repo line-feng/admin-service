@@ -5,6 +5,7 @@ dist
 dist.zip
 dist_electron
 tmp
+log
 
 # local env files
 .env.local
