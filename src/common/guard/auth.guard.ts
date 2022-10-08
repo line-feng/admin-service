@@ -25,10 +25,10 @@ export class AuthGuard implements CanActivate {
     const response = context.switchToHttp().getResponse();
     let sid: string | null = request.cookies?.sid;
     // console.log(request);
-    console.log(request.hostname, 'hostname');
-    console.log(request.query, 'query');
-    console.log(request.params, 'params');
-    console.log(request.body, 'body');
+    // console.log(request.hostname, 'hostname');
+    // console.log(request.query, 'query');
+    // console.log(request.params, 'params');
+    // console.log(request.body, 'body');
 
     if (isPublic) {
       return true;

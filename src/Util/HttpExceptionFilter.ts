@@ -5,6 +5,8 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
+import { logger } from '../Util/logger'
+
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -12,6 +14,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
+
+  logger.error(exception.message)
 
     // 整理返回全部的错误信息
     let errorResponse = {

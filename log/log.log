@@ -4,3 +4,11 @@
 [2022-09-02 17:02:20] info: watch -- http://192.168.255.10:9999
 [2022-09-02 17:06:53] info: start service
 [2022-09-02 17:06:53] info: watch -- http://192.168.255.10:9999
+[2022-10-08 14:57:20] info: start service
+[2022-10-08 14:57:20] info: watch -- http://192.168.255.10:9999
+[2022-10-08 14:57:21] error: 身份验证失败,请重新登陆！
+[2022-10-08 14:57:21] error: Cannot GET /favicon.ico
+[2022-10-08 14:58:52] error: Cannot GET /favicon.ico
+[2022-10-08 14:58:58] error: Cannot GET /favicon.ico
+[2022-10-08 14:59:36] error: Cannot GET /favicon.ico
+[2022-10-08 15:00:34] error: Cannot GET /favicon.ico
